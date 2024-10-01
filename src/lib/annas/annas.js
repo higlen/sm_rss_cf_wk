@@ -69,7 +69,7 @@ let annas = async (ctx) => {
 	}
 	let data = {
 		title: title,
-		link: link,
+		link: _url,
 		description: description,
 		language: language,
 		items: items,
