@@ -68,10 +68,10 @@ let annas = async (ctx) => {
 			continue;
 		}
 		let item = {
-			title: each_item_titles[i].trim(),
+			title: each_item_titles[i],
 			link: `https://annas-archive.org${each_item_links[i]}`,
-			description: each_item_texts[i].trim(),
-			pubDate: each_item_dates[i].trim(),
+			description: each_item_texts[i],
+			pubDate: each_item_dates[i],
 		};
 		items.push(item);
 	}
