@@ -31,6 +31,7 @@ let annas = async (ctx) => {
 	let each_item_links = [];
 	let each_item_texts = [];
 	let each_item_titles = [];
+	let each_item_dates = [];	
 	let new_res = new HTMLRewriter()
 		.on('a.items-center', {
 			element(element) {
