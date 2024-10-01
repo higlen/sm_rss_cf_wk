@@ -1,6 +1,6 @@
 # RSSWorker
 
-RSSWorker 是一个轻量级的 RSS 订阅工具，可以部署在 Cloudflare Worker 上。
+RSSWorker 是一个轻量级的 RSS 订阅工具，可以部署在 Cloudflare Worker 上。 
 
 ## 支持
 
