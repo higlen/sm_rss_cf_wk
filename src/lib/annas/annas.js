@@ -36,8 +36,8 @@ let annas = async (ctx) => {
 		.on('a.items-center', {
 			element(element) {
 				each_item_links.push(element.getAttribute('href'));
-				_txt=element.getAttribute('text')
-				_txt = _txt.trim();
+				_txt=element.getAttribute('innerText')
+				_txt=_txt.trim();
 				each_item_texts.push(_txt);
 			}
 		})
