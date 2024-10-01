@@ -31,39 +31,47 @@ let annas = async (ctx) => {
 	let each_item_links = [];
 	let each_item_texts = [];
 	let each_item_titles = [];
-	let each_item_dates = [];	
+	let each_item_dates = [];
 	let new_res = new HTMLRewriter()
 		.on('a.items-center', {
 			element(element) {
 				each_item_links.push(element.getAttribute('href'));
-				each_item_texts.push(element.getAttribute('innerText'));
-				//_txt=element.getAttribute('innerText')
-				//_txt=_txt.trim();
-				//each_item_texts.push(_txt);
-			}
+				each_item_texts.push('');
+			},
+			text(text) {
+				each_item_texts[each_item_texts.length - 1] += text.text;
+			},
 		})
 		.on('h3', {
 			element(element) {
-				each_item_titles.push(element.getAttribute('innerText'));
+				each_item_titles.push('');
+				//each_item_titles.push(element.getAttribute('innerText'));
+			},
+			text(text) {
+				each_item_titles[each_item_titles.length - 1] += text.text;
 			},
 		})
 		.on('div.truncate', {
 			element(element) {
-				each_item_dates.push(element.getAttribute('innerText'));
+				each_item_dates.push('');
+				//each_item_dates.push(element.getAttribute('innerText'));
+			},
+			text(text) {
+				each_item_dates[each_item_dates.length - 1] += text.text;
 			},
 		})
 		.transform(res);
 	await new_res.text();
 	let items = [];
 	for (let i = 0; i < each_item_texts.length; i++) {
-		if (each_item_texts[i] === '') {
+		if (each_item_links[i] === '') {
 			continue;
 		}
 		let item = {
-			title: each_item_titles[i],
-			link: each_item_links[i],
-			description: each_item_texts[i],
-			pubDate: each_item_dates[i],
+			title: each_item_titles[i].trim(),
+			link: `https://annas-archive.org${each_item_links[i]}`,
+			description: each_item_texts[i].trim(),
+			pubDate: each_item_dates[i].trim(),
 		};
 		items.push(item);
 	}
