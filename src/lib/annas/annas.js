@@ -76,4 +76,8 @@ let annas = async (ctx) => {
 	return ctx.body(renderRss2(data));
 };
 
-export { annas };
+let setup = (route) => {
+	route.get('/annas', annas);
+};
+
+export default { setup };
